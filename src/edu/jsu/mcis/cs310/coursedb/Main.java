@@ -22,7 +22,7 @@ public class Main {
         
         boolean x;
         int termid=1;
-        x=registrationDao.create(studentid,TERMID_FA24, 10011);
+        x=registrationDao.delete(studentid,TERMID_FA24, 10007);
         System.err.println(x);
         
         // Test Connection
