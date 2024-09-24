@@ -10,6 +10,8 @@ public class RegistrationDAO {
     
     private final DAOFactory daoFactory;
     
+    private static final String QUERY_CREATE = "INSERT INTO registration (studentid, termid, crn) VALUES (?, ?, ?)";
+    
     RegistrationDAO(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
@@ -28,6 +30,17 @@ public class RegistrationDAO {
             if (conn.isValid(0)) {
                 
                 // INSERT YOUR CODE HERE
+                ps = conn.prepareStatement(QUERY_CREATE,Statement.RETURN_GENERATED_KEYS);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                ps.setInt(3, crn);
+                
+                int updateCount = ps.executeUpdate();
+                
+                if(updateCount>0){
+                    rs=ps.getGeneratedKeys();
+                    result=true;
+                }
                 
             }
             

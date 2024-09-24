@@ -31,6 +31,19 @@ public class SectionDAO {
                 
                 // INSERT YOUR CODE HERE
                 
+                ps = conn.prepareStatement(QUERY_FIND);
+                ps.setInt(1, termid);
+                ps.setString(2, subjectid);
+                ps.setString(1, num);
+                
+                boolean hasresults = ps.execute();
+                if(hasresults){
+                    rs=ps.getResultSet();
+                    while(rs.next()){
+                        
+                    }
+                }
+                
             }
             
         }

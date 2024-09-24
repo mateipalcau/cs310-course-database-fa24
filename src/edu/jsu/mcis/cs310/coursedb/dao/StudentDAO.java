@@ -1,4 +1,4 @@
-package edu.jsu.mcis.cs310.coursedb.dao;
+ package edu.jsu.mcis.cs310.coursedb.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
