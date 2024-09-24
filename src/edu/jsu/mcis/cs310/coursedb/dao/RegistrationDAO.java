@@ -11,7 +11,8 @@ public class RegistrationDAO {
     private final DAOFactory daoFactory;
     
     private static final String QUERY_CREATE = "INSERT INTO registration (studentid, termid, crn) VALUES (?, ?, ?)";
-    private static final String QUERY_DELETE = "DELETE FROM registration WHERE studentid = ? AND termid=? AND crn=? ";
+    private static final String QUERY_DELETE_DROP = "DELETE FROM registration WHERE studentid = ? AND termid=? AND crn=? ";
+    private static final String QUERY_DELETE_WITHDRAW = "DELETE FROM registration WHERE studentid = ? AND termid=?";
     
     RegistrationDAO(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -74,7 +75,7 @@ public class RegistrationDAO {
                 
                 // INSERT YOUR CODE HERE
                 
-                ps = conn.prepareStatement(QUERY_DELETE);
+                ps = conn.prepareStatement(QUERY_DELETE_DROP);
                 ps.setInt(1, studentid);
                 ps.setInt(2, termid);
                 ps.setInt(3, crn);
@@ -114,6 +115,17 @@ public class RegistrationDAO {
             if (conn.isValid(0)) {
                 
                 // INSERT YOUR CODE HERE
+                
+                ps = conn.prepareStatement(QUERY_DELETE_WITHDRAW);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                
+                int updateCount = ps.executeUpdate();
+                
+                if(updateCount>0){
+                    result=true;
+                }
+                
                 
             }
             
