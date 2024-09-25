@@ -23,7 +23,7 @@ public class Main {
         boolean x;
         int termid=1;
         //x=registrationDao.create(studentid,TERMID_FA24,10007);
-        System.err.println(registrationDao.list(studentid, TERMID_FA24));
+        System.err.println(sectionDao.find(TERMID_FA24,"ACC","200"));
         
         // Test Connection
         

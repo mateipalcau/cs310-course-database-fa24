@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import static edu.jsu.mcis.cs310.coursedb.dao.DAOUtility.getResultSetAsJson;
 
 public class SectionDAO {
     
@@ -34,15 +35,19 @@ public class SectionDAO {
                 ps = conn.prepareStatement(QUERY_FIND);
                 ps.setInt(1, termid);
                 ps.setString(2, subjectid);
-                ps.setString(1, num);
+                ps.setString(3, num);
                 
                 boolean hasresults = ps.execute();
                 if(hasresults){
                     rs=ps.getResultSet();
+                    result=getResultSetAsJson(rs);
                     while(rs.next()){
+                        
+                        result=getResultSetAsJson(rs);
                         
                     }
                 }
+                
                 
             }
             
@@ -56,9 +61,10 @@ public class SectionDAO {
             if (ps != null) { try { ps.close(); } catch (Exception e) { e.printStackTrace(); } }
             
         }
-        
         return result;
         
+        
+        
     }
-    
 }
+
