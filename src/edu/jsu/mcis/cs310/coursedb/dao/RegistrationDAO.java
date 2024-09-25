@@ -1,5 +1,6 @@
 package edu.jsu.mcis.cs310.coursedb.dao;
 
+import static edu.jsu.mcis.cs310.coursedb.dao.DAOUtility.getResultSetAsJson;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ public class RegistrationDAO {
     private static final String QUERY_CREATE = "INSERT INTO registration (studentid, termid, crn) VALUES (?, ?, ?)";
     private static final String QUERY_DELETE_DROP = "DELETE FROM registration WHERE studentid = ? AND termid=? AND crn=? ";
     private static final String QUERY_DELETE_WITHDRAW = "DELETE FROM registration WHERE studentid = ? AND termid=?";
+    private static final String QUERY_LIST = "SELECT * FROM registration";
     
     RegistrationDAO(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -158,6 +160,14 @@ public class RegistrationDAO {
             if (conn.isValid(0)) {
                 
                 // INSERT YOUR CODE HERE
+                
+                ps = conn.prepareStatement(QUERY_LIST);
+                
+                boolean hasresults = ps.execute();
+                if(hasresults){
+                    rs=ps.getResultSet();
+                }
+                result=getResultSetAsJson(rs);
                 
             }
             

@@ -22,8 +22,8 @@ public class Main {
         
         boolean x;
         int termid=1;
-        x=registrationDao.delete(studentid,TERMID_FA24);
-        System.err.println(x);
+        //x=registrationDao.create(studentid,TERMID_FA24,10007);
+        System.err.println(registrationDao.list(studentid, TERMID_FA24));
         
         // Test Connection
         
