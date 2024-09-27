@@ -33,7 +33,7 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                
                 ps = conn.prepareStatement(QUERY_CREATE,Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, studentid);
                 ps.setInt(2, termid);
@@ -75,8 +75,6 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
-                
                 ps = conn.prepareStatement(QUERY_DELETE_DROP);
                 ps.setInt(1, studentid);
                 ps.setInt(2, termid);
@@ -115,8 +113,6 @@ public class RegistrationDAO {
             Connection conn = daoFactory.getConnection();
             
             if (conn.isValid(0)) {
-                
-                // INSERT YOUR CODE HERE
                 
                 ps = conn.prepareStatement(QUERY_DELETE_WITHDRAW);
                 ps.setInt(1, studentid);
@@ -158,8 +154,6 @@ public class RegistrationDAO {
             Connection conn = daoFactory.getConnection();
             
             if (conn.isValid(0)) {
-                
-                // INSERT YOUR CODE HERE
                 
                 ps = conn.prepareStatement(QUERY_LIST);
                 

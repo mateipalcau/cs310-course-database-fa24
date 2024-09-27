@@ -30,21 +30,20 @@ public class SectionDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
-                
                 ps = conn.prepareStatement(QUERY_FIND);
+                
                 ps.setInt(1, termid);
                 ps.setString(2, subjectid);
                 ps.setString(3, num);
                 
                 boolean hasresults = ps.execute();
+                
                 if(hasresults){
                     rs=ps.getResultSet();
                     result=getResultSetAsJson(rs);
+                    
                     while(rs.next()){
-                        
                         result=getResultSetAsJson(rs);
-                        
                     }
                 }
                 
